@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Willing Prison — Bill Corning</title>
+  <meta name="description" content="The Willing Prison: Unlocking the Gifts Inside by Bill Corning. Every man builds a fortress. The key is in your pocket. It always was." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-dim: #a07c30;
+      --cream: #f5f0e8;
+      --warm-white: #faf7f2;
+      --dark: #0e0c09;
+      --dark-mid: #1a1612;
+      --dark-warm: #2a2218;
+      --text-body: #d4cfc8;
+      --text-muted: #8a8070;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--text-body);
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    }
+
+    /* Light rays */
+    .rays {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .ray {
+      position: absolute;
+      top: -10%;
+      width: 1px;
+      height: 140%;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.18), transparent 70%);
+      transform-origin: top center;
+    }
+    .ray:nth-child(1) { left: 55%; transform: rotate(-12deg); opacity: 0.6; animation: rayPulse 6s ease-in-out infinite; }
+    .ray:nth-child(2) { left: 60%; transform: rotate(-8deg); opacity: 0.4; animation: rayPulse 8s ease-in-out infinite 1s; }
+    .ray:nth-child(3) { left: 65%; transform: rotate(-4deg); opacity: 0.5; animation: rayPulse 7s ease-in-out infinite 2s; }
+    .ray:nth-child(4) { left: 70%; transform: rotate(0deg); opacity: 0.3; animation: rayPulse 9s ease-in-out infinite 0.5s; }
+    .ray:nth-child(5) { left: 75%; transform: rotate(4deg); opacity: 0.4; animation: rayPulse 6.5s ease-in-out infinite 1.5s; }
+
+    @keyframes rayPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      padding: 6rem 3rem;
+      width: 100%;
+    }
+
+    .hero-text { animation: fadeUp 1.2s ease both; }
+    .hero-cover { animation: fadeUp 1.2s ease 0.3s both; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 200;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-style: italic;
+      color: var(--text-body);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      border-left: 1px solid var(--gold-dim);
+      padding-left: 1.5rem;
+    }
+
+    .hero-author {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 200;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+    }
+    .btn-primary:hover {
+      background: #dbb85a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,168,76,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+    }
+    .btn-outline:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-cover {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cover-wrap {
+      position: relative;
+      width: min(340px, 100%);
+    }
+
+    .cover-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover-img {
+      width: 100%;
+      display: block;
+      box-shadow:
+        0 0 0 1px rgba(201,168,76,0.2),
+        0 20px 60px rgba(0,0,0,0.8),
+        0 4px 16px rgba(201,168,76,0.1);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
+    .divider-diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 2rem; }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 200;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+
+    /* ── BOOK SECTION ── */
+    .book-section { background: var(--dark-mid); }
+
+    .book-hook {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.4;
+      margin-bottom: 2.5rem;
+    }
+
+    .book-hook em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .book-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: var(--text-body);
+      max-width: 680px;
+    }
+
+    .book-body p { margin-bottom: 1.4rem; }
+
+    .pull-quote {
+      margin: 3.5rem 0;
+      padding: 2rem 2.5rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(201,168,76,0.04);
+    }
+
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--cream);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── COMING SOON ── */
+    .coming-section { background: var(--dark); text-align: center; }
+
+    .coming-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .coming-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .amazon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--dark-warm); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .author-photo-wrap {
+      position: relative;
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .author-photo-wrap::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: -12px;
+      bottom: -12px;
+      border: 1px solid var(--gold-dim);
+      pointer-events: none;
+    }
+
+    .author-photo {
+      width: 100%;
+      display: block;
+      filter: sepia(20%) contrast(1.05);
+    }
+
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+      line-height: 1.1;
+    }
+
+    .about-text .author-title {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 200;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .about-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(14,12,9,0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 200;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 8rem 1.5rem 4rem;
+        gap: 3rem;
+      }
+
+      .hero-cover { order: -1; }
+      .cover-wrap { width: min(240px, 70%); margin: 0 auto; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .author-photo-wrap { width: 160px; margin: 0 auto; }
+
+      section { padding: 5rem 1.5rem; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">The Willing Prison</a>
+    <ul class="nav-links">
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#buy">Get It</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="rays">
+      <div class="ray"></div>
+      <div class="ray"></div>
+      <div class="ray"></div>
+      <div class="ray"></div>
+      <div class="ray"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">A Memoir</p>
+        <h1 class="hero-title">The<br>Willing<br>Prison</h1>
+        <p class="hero-subtitle">Unlocking the Gifts Inside</p>
+        <p class="hero-tagline">
+          Every man builds a fortress.<br>
+          Some men never leave.<br>
+          <em>The key is in your pocket. It always was.</em>
+        </p>
+        <div class="cta-group">
+          <a href="#buy" class="btn btn-primary">Notify Me on Amazon</a>
+          <a href="#book" class="btn btn-outline">Read More</a>
+        </div>
+        <p class="hero-author">By Bill Corning</p>
+      </div>
+      <div class="hero-cover">
+        <div class="cover-wrap">
+          <img
+            class="cover-img"
+            src="cover.jpg"
+            alt="The Willing Prison book cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book-section" id="book">
+    <div class="section-inner">
+      <p class="section-label reveal">The Book</p>
+      <h2 class="book-hook reveal">
+        It's supposed to be temporary — a shelter to retreat, regroup, recover.<br>
+        <em>But some men never leave.</em>
+      </h2>
+      <div class="book-body reveal">
+        <p>The walls become the thing that traps them. The fortress becomes a Willing Prison.</p>
+        <p>This is the story of one man's forty-six years inside. But it's not really about him.</p>
+        <p>It's about the father who is present but never there. The husband whose wife reaches for him and finds only a ghost. It's about what happens when we overstay our welcome in the places we built to protect ourselves.</p>
+      </div>
+      <div class="pull-quote reveal">
+        <p>"The key is in your pocket. It always was.<br>Will you unlock the door?"</p>
+      </div>
+      <div class="book-body reveal">
+        <p>Written with dark humor, hard-won honesty, and the kind of self-deprecation that can only come from someone who has lived it — <em>The Willing Prison</em> is for any man who has retreated so far inside himself that he forgot there was a world waiting on the other side.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding: 0 2rem;">
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- BUY / COMING SOON -->
+  <section class="coming-section" id="buy">
+    <div class="section-inner">
+      <p class="section-label reveal" style="justify-content: center;">Coming Soon</p>
+      <h2 class="coming-title reveal">Available on Amazon</h2>
+      <p class="coming-sub reveal">Publishing Spring / Summer 2025 — Check back soon for the link.</p>
+      <div class="reveal">
+        <div class="amazon-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          Available on Amazon — Coming Soon
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="padding: 0 2rem;">
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="section-inner">
+      <p class="section-label reveal">About the Author</p>
+      <div class="about-grid">
+        <div class="author-photo-wrap reveal">
+          <img
+            class="author-photo"
+            src="author.jpg"
+            alt="Bill Corning"
+          />
+        </div>
+        <div class="about-text reveal">
+          <h2>Bill Corning</h2>
+          <p class="author-title">Author &nbsp;·&nbsp; First Book</p>
+          <p>Bill Corning spent decades building walls — around networks, around systems, and around his own heart. A shift in health and life led him to a new path: tearing them down on the page.</p>
+          <p>He is a devoted husband, a proud father, and the richest man alive in all the ways that matter most.</p>
+          <p><em>The Willing Prison</em> is his first book.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section style="background: var(--dark-mid); padding: 7rem 2rem;" id="contact">
+    <div class="section-inner" style="text-align: center;">
+      <p class="section-label reveal" style="justify-content: center;">Get In Touch</p>
+      <h2 class="coming-title reveal">Reach Out</h2>
+      <p class="coming-sub reveal" style="max-width: 500px; margin: 0 auto 3rem;">Whether you want to share your own story, ask a question, or just say hello — the door is open.</p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;" class="reveal">
+        <a href="mailto:bill@thewillingprison.com" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          bill@thewillingprison.com
+        </a>
+        <a href="https://linkedin.com/in/billcorning" target="_blank" class="btn btn-outline" style="display:inline-flex; align-items:center; gap:0.6rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/billcorning
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-title">The Willing Prison</p>
+    <p class="footer-tagline">The key is in your pocket. It always was.</p>
+    <p class="footer-copy">© 2026 Bill Corning · All rights reserved</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
